@@ -16,7 +16,8 @@ def add_two_number(l1, l2):
         Space: O(n)
     """
     carried = 0
-    answer = current = ListNode() 
+    answer = ListNode()
+    current = answer
     while l1 or l2 or carried:
         if l1:
             carried += l1.val
@@ -24,6 +25,8 @@ def add_two_number(l1, l2):
         if l2:
             carried += l2.val
             l2 = l2.next
-        carried, res = divmod(carried, 10)
-        current.next = current = ListNode(res)
+        res = carried % 10
+        carried = carried // 10
+        current.next = ListNode(res)
+        current = current.next
     return answer.next
