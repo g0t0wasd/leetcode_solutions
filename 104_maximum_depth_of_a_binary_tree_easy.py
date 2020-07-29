@@ -35,3 +35,21 @@ class Solution:
         if not root:
             return 0
         return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
+
+    # Top Bottom appoach
+    # We pass the increasing depth through the recursion
+    answer = 0
+
+    def maxDepth(self, root: TreeNode) -> int:
+        self.top_bottom(root, 1)
+        return self.answer
+
+    def top_bottom(self, root, depth):
+        if not root:
+            return 0
+
+        if not root.left and not root.right:
+            self.answer = max(self.answer, depth)
+
+        self.top_bottom(root.left, depth+1)
+        self.top_bottom(root.right, depth+1)
