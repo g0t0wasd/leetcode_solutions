@@ -1,3 +1,6 @@
+from typing import List
+
+
 def two_sum(nums, target):
     """
     Description:
